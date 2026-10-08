@@ -1,0 +1,22 @@
+{
+  "name": "",
+  "direction": "",
+  "targetBase": null,
+  "targetCaption": "",
+  "strategy": {
+    "title": "",
+    "body": "",
+    "priorities": [],
+    "fallback": "",
+    "requirements": [],
+    "calibration": [],
+    "calibrationNote": ""
+  },
+  "experience": {
+    "name": "",
+    "title": "",
+    "bullets": [],
+    "url": ""
+  },
+  "projects": []
+}

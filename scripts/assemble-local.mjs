@@ -1,0 +1,10 @@
+import {readFileSync,writeFileSync,readdirSync} from 'node:fs';
+import {join} from 'node:path';
+import {createHash} from 'node:crypto';
+const name=JSON.parse(readFileSync('package.json','utf8')).name,filename=name+'-local.zip';
+const parts=readdirSync('downloads').filter(n=>n.startsWith(filename+'.')).sort();
+if(!parts.length)throw Error('Local ZIP parts are missing from downloads/. Clone or download the complete repository.');
+const bytes=Buffer.concat(parts.map(n=>readFileSync(join('downloads',n))));
+const sum=readFileSync('downloads/SHA256SUMS','utf8').split('\n').find(line=>line.endsWith('  '+filename))?.split('  ')[0];
+if(!sum||createHash('sha256').update(bytes).digest('hex')!==sum)throw Error('Archive checksum mismatch. Fetch all parts from the same version.');
+writeFileSync(join('downloads',filename),bytes);console.log('Created downloads/'+filename+'. Extract it and follow RUN.md.');

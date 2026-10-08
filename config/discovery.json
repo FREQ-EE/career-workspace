@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "enabled": false,
+  "maxNewOpportunitiesPerRun": 5,
+  "sources": [],
+  "queries": [],
+  "priorityRules": [],
+  "constraints": {},
+  "liveVerification": {
+    "required": true,
+    "recordEvidence": true
+  }
+}

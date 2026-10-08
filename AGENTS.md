@@ -1,0 +1,5 @@
+# Repository work
+
+Read README.md and docs/data-contracts.md. For the public starter, keep canonical datasets empty. In a user-authorised private personal copy, actual user records are expected; preserve them and keep the copy private. For every copy, do not add personal identifiers, source-repository links, credentials, history snapshots or sample records. Do not reuse another person’s Site project ID; preserve the ID of the user’s own provisioned private Site when updating it. Preserve MIT and third-party notices. Change only this checkout; upstream private applications are outside this repository's scope.
+
+Before releasing run npm run typecheck, npm run validate, npm test, npm run build and npm run build:sites. Build source/local/Sites archives with npm run package and inspect them. Never package .env.local, Git history, local caches or non-empty private datasets into the starter distribution. Fixtures belong only in temporary test directories and must be removed after tests. See docs/project-instructions.md for operation through ChatGPT.

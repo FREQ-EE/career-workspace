@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "name": "",
+  "email": "",
+  "phone": "",
+  "location": "",
+  "languages": {
+    "en": [],
+    "de": []
+  },
+  "headlines": {
+    "en": "",
+    "de": ""
+  },
+  "summaries": {
+    "operations": {
+      "en": "",
+      "de": ""
+    },
+    "implementation": {
+      "en": "",
+      "de": ""
+    },
+    "ai-enablement": {
+      "en": "",
+      "de": ""
+    }
+  },
+  "experience": [],
+  "education": [],
+  "projects": [],
+  "skills": {
+    "en": [],
+    "de": []
+  },
+  "reviewStatus": "Complete and review before generating or sending",
+  "studio": {
+    "language": "en",
+    "focus": "operations",
+    "photo": false,
+    "opportunityId": ""
+  }
+}

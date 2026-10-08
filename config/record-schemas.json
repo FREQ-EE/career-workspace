@@ -1,0 +1,8 @@
+{
+  "data/workspace.json": "workspace",
+  "data/profile.json": "profile",
+  "data/site-content.json": "site-content",
+  "career/cv.json": "cv",
+  "config/discovery.json": "discovery",
+  "config/integrations.json": "integrations"
+}

@@ -1,0 +1,241 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "opportunities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9-]*$"
+          },
+          "company": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "location": {
+            "type": "string"
+          },
+          "salary": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string",
+            "pattern": "^(|https?://)"
+          },
+          "retrievedOn": {
+            "type": "string",
+            "pattern": "^(|[0-9]{4}-[0-9]{2}-[0-9]{2})$"
+          },
+          "sourceStatus": {
+            "type": "string"
+          },
+          "assessment": {
+            "type": "string"
+          },
+          "family": {
+            "type": "string"
+          },
+          "fit": {
+            "type": "string"
+          },
+          "gaps": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "stage": {
+            "enum": [
+              "Inbox",
+              "Shortlisted",
+              "Preparing",
+              "Applied",
+              "Interview",
+              "Offer",
+              "Closed",
+              "Dismissed"
+            ]
+          },
+          "notes": {
+            "type": "string"
+          },
+          "nextAction": {
+            "type": "string"
+          },
+          "due": {
+            "type": "string",
+            "pattern": "^(|[0-9]{4}-[0-9]{2}-[0-9]{2})$"
+          },
+          "history": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "at": {
+                  "type": "string"
+                },
+                "stage": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "at",
+                "stage"
+              ],
+              "additionalProperties": true
+            }
+          },
+          "companySummary": {
+            "type": "string"
+          },
+          "companySource": {
+            "type": "string",
+            "pattern": "^(|https?://)"
+          },
+          "companyCheckedOn": {
+            "type": "string",
+            "pattern": "^(|[0-9]{4}-[0-9]{2}-[0-9]{2})$"
+          },
+          "listingStatus": {
+            "enum": [
+              "Live",
+              "Unavailable",
+              "Unverified"
+            ]
+          },
+          "verification": {
+            "type": "object",
+            "properties": {
+              "checkedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              },
+              "method": {
+                "type": "string"
+              },
+              "evidence": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "checkedAt",
+              "url",
+              "method",
+              "evidence"
+            ],
+            "additionalProperties": true
+          }
+        },
+        "required": [
+          "id",
+          "company",
+          "title",
+          "location",
+          "salary",
+          "language",
+          "source",
+          "retrievedOn",
+          "sourceStatus",
+          "assessment",
+          "family",
+          "fit",
+          "gaps",
+          "summary",
+          "stage",
+          "notes",
+          "nextAction",
+          "due",
+          "history"
+        ],
+        "additionalProperties": true
+      }
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9-]*$"
+          },
+          "title": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "string"
+          },
+          "due": {
+            "type": "string",
+            "pattern": "^(|[0-9]{4}-[0-9]{2}-[0-9]{2})$"
+          },
+          "done": {
+            "type": "boolean"
+          },
+          "opportunityId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "detail",
+          "due",
+          "done",
+          "opportunityId"
+        ],
+        "additionalProperties": true
+      }
+    },
+    "activity": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9-]*$"
+          },
+          "text": {
+            "type": "string"
+          },
+          "at": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "text",
+          "at",
+          "kind"
+        ],
+        "additionalProperties": true
+      }
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "opportunities",
+    "tasks",
+    "activity"
+  ],
+  "additionalProperties": true
+}

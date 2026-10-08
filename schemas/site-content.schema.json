@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "direction": {
+      "type": "string"
+    },
+    "targetBase": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "targetCaption": {
+      "type": "string"
+    },
+    "strategy": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        },
+        "priorities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "fallback": {
+          "type": "string"
+        },
+        "requirements": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "calibration": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "calibrationNote": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "body",
+        "priorities",
+        "fallback",
+        "requirements",
+        "calibration",
+        "calibrationNote"
+      ],
+      "additionalProperties": true
+    },
+    "experience": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "bullets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "title",
+        "bullets",
+        "url"
+      ],
+      "additionalProperties": true
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "tag": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "tag",
+          "body",
+          "detail",
+          "path"
+        ],
+        "additionalProperties": true
+      }
+    }
+  },
+  "required": [
+    "name",
+    "direction",
+    "targetBase",
+    "targetCaption",
+    "strategy",
+    "experience",
+    "projects"
+  ],
+  "additionalProperties": true
+}

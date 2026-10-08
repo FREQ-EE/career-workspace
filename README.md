@@ -31,7 +31,7 @@ npm run build
 npm start
 ```
 
-Alternatively, extract `career-workspace-local.zip`, then follow its `RUN.md`. It contains a built Node server, assets and empty records. It is a Node server application, not a static `index.html`; opening files directly or using a static file server cannot run its APIs. Standard source-based installation works on Windows, macOS and Linux. The prebuilt local archive was built on Linux; rebuild from source if platform-specific dependencies differ on another system.
+Alternatively, in a cloned repository run `node scripts/assemble-local.mjs` to assemble the checksum-verified `career-workspace-local.zip` from the parts in `downloads/`. Extract the ZIP, then follow its `RUN.md`. Assembly needs only Node and no installed project dependencies. It contains a built Node server, assets and empty records. It is a Node server application, not a static `index.html`; opening files directly or using a static file server cannot run its APIs. Standard source-based installation works on Windows, macOS and Linux. The prebuilt local archive was built on Linux; rebuild from source if platform-specific dependencies differ on another system.
 
 ## Make a private personal copy
 
@@ -108,7 +108,7 @@ npm run package
 
 `npm run audit` checks an empty public starter, so it intentionally fails after entering personal data. Set the GitHub Actions repository variable `EMPTY_STARTER=true` only for a public starter that must remain empty; private personal copies validate schemas without that audit. `ASSERT_EMPTY_STARTER=1 npm test` also enables the strict empty-distribution test.
 
-`releases/` contains source, prebuilt local and Sites Worker ZIPs plus `SHA256SUMS`. The repository's `downloads/` contains the audited empty distribution. To generate a personal backup after entering records, use your private repository or export tools; do not upload a newly generated personal archive to this public starter.
+`releases/` contains source, prebuilt local and Sites Worker ZIPs plus `SHA256SUMS`. The repository's `downloads/` contains the audited empty distribution. The large prebuilt local ZIP is stored in two parts and reconstructed with the supplied Node script; the source and Sites ZIPs are single files. To generate a personal backup after entering records, use your private repository or export tools; do not upload a newly generated personal archive to this public starter.
 
 The Sites Worker ZIP contains build output and a generic manifest; it still requires your Site identity and runtime secrets before publication. The source ZIP is the appropriate input for a new user's Sites import/build workflow.
 

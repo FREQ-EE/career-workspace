@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "storage": {
+      "type": "string"
+    },
+    "discovery": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "description"
+      ],
+      "additionalProperties": true
+    },
+    "calendar": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "description"
+      ],
+      "additionalProperties": true
+    },
+    "applicationRoutine": {
+      "type": "object"
+    },
+    "fortnightReview": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "storage",
+    "discovery",
+    "calendar",
+    "applicationRoutine",
+    "fortnightReview"
+  ],
+  "additionalProperties": true
+}

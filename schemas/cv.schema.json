@@ -1,0 +1,339 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "headlines": {
+      "type": "object",
+      "properties": {
+        "en": {
+          "type": "string"
+        },
+        "de": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "en",
+        "de"
+      ],
+      "additionalProperties": true
+    },
+    "summaries": {
+      "type": "object",
+      "properties": {
+        "operations": {
+          "type": "object",
+          "properties": {
+            "en": {
+              "type": "string"
+            },
+            "de": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "en",
+            "de"
+          ],
+          "additionalProperties": true
+        },
+        "implementation": {
+          "type": "object",
+          "properties": {
+            "en": {
+              "type": "string"
+            },
+            "de": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "en",
+            "de"
+          ],
+          "additionalProperties": true
+        },
+        "ai-enablement": {
+          "type": "object",
+          "properties": {
+            "en": {
+              "type": "string"
+            },
+            "de": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "en",
+            "de"
+          ],
+          "additionalProperties": true
+        }
+      },
+      "required": [
+        "operations",
+        "implementation",
+        "ai-enablement"
+      ],
+      "additionalProperties": true
+    },
+    "skills": {
+      "type": "object",
+      "properties": {
+        "en": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "de": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "en",
+        "de"
+      ],
+      "additionalProperties": true
+    },
+    "languages": {
+      "type": "object",
+      "properties": {
+        "en": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "de": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "en",
+        "de"
+      ],
+      "additionalProperties": true
+    },
+    "experience": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "dates": {
+            "type": "string"
+          },
+          "location": {
+            "type": "string"
+          },
+          "title": {
+            "type": "object",
+            "properties": {
+              "en": {
+                "type": "string"
+              },
+              "de": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "en",
+              "de"
+            ],
+            "additionalProperties": true
+          },
+          "company": {
+            "type": "string"
+          },
+          "bullets": {
+            "type": "object",
+            "properties": {
+              "en": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "de": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "en",
+              "de"
+            ],
+            "additionalProperties": true
+          }
+        },
+        "required": [
+          "dates",
+          "location",
+          "title",
+          "company",
+          "bullets"
+        ],
+        "additionalProperties": true
+      }
+    },
+    "education": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "dates": {
+            "type": "string"
+          },
+          "title": {
+            "type": "object",
+            "properties": {
+              "en": {
+                "type": "string"
+              },
+              "de": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "en",
+              "de"
+            ],
+            "additionalProperties": true
+          },
+          "organisation": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "object",
+            "properties": {
+              "en": {
+                "type": "string"
+              },
+              "de": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "en",
+              "de"
+            ],
+            "additionalProperties": true
+          }
+        },
+        "required": [
+          "dates",
+          "title",
+          "organisation",
+          "detail"
+        ],
+        "additionalProperties": true
+      }
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "object",
+            "properties": {
+              "en": {
+                "type": "string"
+              },
+              "de": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "en",
+              "de"
+            ],
+            "additionalProperties": true
+          }
+        },
+        "required": [
+          "name",
+          "detail"
+        ],
+        "additionalProperties": true
+      }
+    },
+    "reviewStatus": {
+      "type": "string"
+    },
+    "studio": {
+      "type": "object",
+      "properties": {
+        "language": {
+          "enum": [
+            "en",
+            "de"
+          ]
+        },
+        "focus": {
+          "enum": [
+            "operations",
+            "implementation",
+            "ai-enablement"
+          ]
+        },
+        "photo": {
+          "type": "boolean"
+        },
+        "opportunityId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "language",
+        "focus",
+        "photo",
+        "opportunityId"
+      ],
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "name",
+    "email",
+    "phone",
+    "location",
+    "headlines",
+    "summaries",
+    "skills",
+    "languages",
+    "experience",
+    "education",
+    "projects",
+    "reviewStatus",
+    "studio"
+  ],
+  "additionalProperties": true
+}

@@ -1,0 +1,1 @@
+A private career workspace with job tracking, automatic saving, bilingual CVs and optional GitHub and ChatGPT workflows.

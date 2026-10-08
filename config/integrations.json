@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "storage": "configured backend",
+  "discovery": {
+    "status": "not configured",
+    "description": "Set preferences and explicitly schedule discovery through ChatGPT."
+  },
+  "calendar": {
+    "status": "not configured",
+    "description": "Connect a calendar separately if required."
+  },
+  "applicationRoutine": {},
+  "fortnightReview": {}
+}
