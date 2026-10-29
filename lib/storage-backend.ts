@@ -153,7 +153,7 @@ export async function writeBytes(
     };
   }
   // An exclusive filesystem lock serialises compare-and-swap across processes.
-  const lock = localPath("data-lock");
+  const lock = dirname(localPath("data-lock")) + ".write-lock";
   let handle;
   for (let n = 0; n < 50; n++) {
     try {

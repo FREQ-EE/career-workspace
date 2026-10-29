@@ -10,6 +10,7 @@ const excluded = new Set([
   "artifacts",
   ".desktop-app",
   ".wrangler",
+  ".vinext",
   "playwright-report",
   "test-results",
 ]);

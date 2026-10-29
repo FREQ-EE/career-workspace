@@ -131,7 +131,7 @@ export async function importEvidence(
         }
         text = parts.join("\n").slice(0, 120000);
       } finally {
-        await pdf.destroy();
+        await loading.destroy();
       }
     } catch (error) {
       if (error instanceof DataError) throw error;

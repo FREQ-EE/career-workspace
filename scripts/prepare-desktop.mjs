@@ -1,8 +1,21 @@
-import { cp, mkdir, access } from "node:fs/promises";
+import { cp, mkdir, access, readdir, rm } from "node:fs/promises";
 import { join } from "node:path";
 const root = process.cwd(),
   server = join(root, ".next", "standalone");
 await access(join(server, "server.js"));
+// Runtime code is compiled into .next; personal starter files are copied into
+// their own resource directory. Dynamic tracing must not add the checkout,
+// previous installers or development output to the desktop server.
+const runtimeEntries = new Set([
+  ".next",
+  "node_modules",
+  "package.json",
+  "server.js",
+  "public",
+]);
+for (const name of await readdir(server))
+  if (!runtimeEntries.has(name))
+    await rm(join(server, name), { recursive: true, force: true });
 await mkdir(join(server, ".next"), { recursive: true });
 await cp(join(root, ".next", "static"), join(server, ".next", "static"), {
   recursive: true,

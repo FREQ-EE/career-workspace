@@ -8,7 +8,7 @@ import {
   realpathSync,
   statSync,
 } from "node:fs";
-import { join } from "node:path";
+import { join, sep } from "node:path";
 import { zipSync, strToU8, unzipSync } from "fflate";
 import { createHash } from "node:crypto";
 execFileSync(process.execPath, ["scripts/audit.mjs"], { stdio: "inherit" });
@@ -21,6 +21,7 @@ const root = process.cwd(),
     "dist",
     "releases",
     ".wrangler",
+    ".vinext",
     "artifacts",
     ".desktop-app",
     "playwright-report",
@@ -51,7 +52,7 @@ function files(
       key = prefix + item.name;
     let directoryEntry = item.isDirectory();
     if (item.isSymbolicLink()) {
-      if (!linkRoot || !realpathSync(path).startsWith(linkRoot + "/"))
+      if (!linkRoot || !realpathSync(path).startsWith(linkRoot + sep))
         throw Error("An archive cannot include an external link: " + key);
       directoryEntry = statSync(path).isDirectory();
     }
@@ -130,7 +131,11 @@ if (existsSync(".next/standalone/server.js")) {
 }
 if (existsSync("dist/server/index.js"))
   save("sites", {
-    ...files(join(root, "dist"), "dist/"),
+    ...files(
+      join(root, "dist"),
+      "dist/",
+      (name) => safe(name) && name !== "standalone",
+    ),
     ".openai/hosting.json": new Uint8Array(
       readFileSync(".openai/hosting.json"),
     ),

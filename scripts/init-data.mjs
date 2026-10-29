@@ -25,6 +25,7 @@ export function applicationDirectory() {
   );
 }
 export async function recoverRestore(directory) {
+  directory = resolve(directory);
   const journal = directory + ".restore-journal.json";
   let entry;
   try {
@@ -62,6 +63,7 @@ export async function recoverRestore(directory) {
   await unlink(journal);
 }
 export async function initialiseData(directory, templates) {
+  directory = resolve(directory);
   await recoverRestore(directory);
   if (resolve(directory) === resolve(templates))
     throw new Error("Personal data must be separate from installed source.");
@@ -146,15 +148,19 @@ export async function initialiseData(directory, templates) {
     );
     await rename(cvPath + ".tmp", cvPath);
   }
-  const lock = join(directory, "data-lock");
-  try {
-    const text = await readFile(lock, "utf8");
-    const prior = JSON.parse(text);
+  for (const lock of [
+    join(directory, "data-lock"),
+    directory + ".write-lock",
+  ]) {
     try {
-      process.kill(prior.pid, 0);
-    } catch (error) {
-      if (error.code === "ESRCH")
-        await import("node:fs/promises").then((fs) => fs.unlink(lock));
-    }
-  } catch {}
+      const text = await readFile(lock, "utf8");
+      const prior = JSON.parse(text);
+      try {
+        process.kill(prior.pid, 0);
+      } catch (error) {
+        if (error.code === "ESRCH")
+          await import("node:fs/promises").then((fs) => fs.unlink(lock));
+      }
+    } catch {}
+  }
 }

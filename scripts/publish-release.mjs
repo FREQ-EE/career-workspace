@@ -10,6 +10,22 @@ import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 const { version } = JSON.parse(await readFile("package.json", "utf8")),
   tag = "v" + version;
+const latestHead = execFileSync(
+  "gh",
+  [
+    "api",
+    "repos/FREQ-EE/career-workspace/git/ref/heads/main",
+    "--jq",
+    ".object.sha",
+  ],
+  { encoding: "utf8" },
+).trim();
+if (latestHead !== process.env.RELEASE_SHA) {
+  console.log(
+    "A newer public snapshot exists; this run will not publish older downloads.",
+  );
+  process.exit(0);
+}
 const files = [];
 async function collect(root) {
   for (const item of await readdir(root, { withFileTypes: true })) {

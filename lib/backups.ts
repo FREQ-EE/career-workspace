@@ -22,7 +22,9 @@ function directory() {
       "Complete backup and restore require the local workspace.",
       400,
     );
-  return config("DATA_DIRECTORY") || process.cwd();
+  return resolve(
+    /* turbopackIgnore: true */ config("DATA_DIRECTORY") || process.cwd(),
+  );
 }
 function allowed(path: string) {
   return (
@@ -89,7 +91,7 @@ async function snapshotBytes() {
   return zipSync(entries, { level: 6 });
 }
 async function workspaceLock(root: string) {
-  const lock = await open(join(root, "data-lock"), "wx", 0o600).catch(() => {
+  const lock = await open(root + ".write-lock", "wx", 0o600).catch(() => {
     throw new DataError(
       "The workspace is busy. Wait for saving or searching to finish before continuing.",
       409,
@@ -105,7 +107,7 @@ export async function backupBytes() {
     return await snapshotBytes();
   } finally {
     await lock.close();
-    await unlink(join(root, "data-lock")).catch(() => {});
+    await unlink(root + ".write-lock").catch(() => {});
   }
 }
 export function validateBackup(bytes: Uint8Array) {
@@ -182,9 +184,14 @@ export async function restoreBackup(bytes: Uint8Array) {
       await mkdir(dirname(target), { recursive: true, mode: 0o700 });
       await writeFile(target, data, { mode: 0o600 });
     }
-    await writeFile(journal, JSON.stringify({ root, previous, staging }), {
-      mode: 0o600,
-    });
+    await writeFile(
+      journal + ".tmp",
+      JSON.stringify({ root, previous, staging }),
+      {
+        mode: 0o600,
+      },
+    );
+    await rename(journal + ".tmp", journal);
     await rename(root, previous);
     moved = true;
     await rename(staging, root);
@@ -196,7 +203,7 @@ export async function restoreBackup(bytes: Uint8Array) {
       await lock.close();
       if (moved && installed)
         await rm(previous, { recursive: true, force: true });
-      else await unlink(join(root, "data-lock")).catch(() => {});
+      await unlink(root + ".write-lock").catch(() => {});
       await rm(staging, { recursive: true, force: true });
       await unlink(journal).catch(() => {});
     } finally {

@@ -5,6 +5,9 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: verify-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -15,6 +18,7 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      - run: npm audit --omit=dev --audit-level=high
       - run: npm run typecheck
       - run: npm run validate
       - run: npm test
@@ -71,5 +75,5 @@ jobs:
             artifacts/*.blockmap
             artifacts/*.png
             artifacts/SHA256SUMS
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 14

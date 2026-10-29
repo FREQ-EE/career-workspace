@@ -548,11 +548,24 @@ if (process.argv.includes("--mcp")) {
         if (!ready) throw new Error("The local application could not start.");
         const image = nativeImage.createFromPath(
           packaged
-            ? path.join(root, "branding", "trayTemplate.png")
-            : path.join(root, "assets", "app", "trayTemplate.png"),
+            ? path.join(
+                root,
+                "branding",
+                process.platform === "darwin" ? "trayTemplate.png" : "icon.png",
+              )
+            : path.join(
+                root,
+                "assets",
+                "app",
+                process.platform === "darwin" ? "trayTemplate.png" : "icon.png",
+              ),
         );
         if (process.platform === "darwin") image.setTemplateImage(true);
-        tray = new Tray(image);
+        tray = new Tray(
+          process.platform === "darwin"
+            ? image
+            : image.resize({ width: 32, height: 32 }),
+        );
         tray.setToolTip("Career Workshop");
         tray.on("double-click", show);
         updateMenu();

@@ -13,6 +13,7 @@ const config: NextConfig = {
       "./tests/**/*",
       "./.env*",
       "./.git/**/*",
+      "./.vinext/**/*",
     ],
   },
   outputFileTracingIncludes: {
@@ -20,6 +21,7 @@ const config: NextConfig = {
     "/api/import": [
       "./node_modules/pdfjs-dist/legacy/build/*",
       "./node_modules/@napi-rs/canvas/**/*",
+      "./node_modules/@napi-rs/canvas-*/**/*",
     ],
   },
 };

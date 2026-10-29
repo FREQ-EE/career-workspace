@@ -18,3 +18,5 @@ artifacts/
 playwright-report/
 test-results/
 .runtime/
+
+.vinext/
