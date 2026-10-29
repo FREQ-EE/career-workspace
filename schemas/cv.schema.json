@@ -1,0 +1,250 @@
+{
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": 2
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 20000
+    },
+    "email": {
+      "type": "string",
+      "maxLength": 20000
+    },
+    "phone": {
+      "type": "string",
+      "maxLength": 20000
+    },
+    "location": {
+      "type": "string",
+      "maxLength": 20000
+    },
+    "language": {
+      "type": "string",
+      "maxLength": 20000
+    },
+    "headline": {
+      "type": "string",
+      "maxLength": 20000
+    },
+    "summary": {
+      "type": "string",
+      "maxLength": 20000
+    },
+    "skills": {
+      "type": "array",
+      "maxItems": 200,
+      "items": {
+        "type": "string",
+        "maxLength": 20000
+      }
+    },
+    "languages": {
+      "type": "array",
+      "maxItems": 200,
+      "items": {
+        "type": "string",
+        "maxLength": 20000
+      }
+    },
+    "experience": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 20000
+          },
+          "dates": {
+            "type": "string",
+            "maxLength": 20000
+          },
+          "location": {
+            "type": "string",
+            "maxLength": 20000
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 20000
+          },
+          "company": {
+            "type": "string",
+            "maxLength": 20000
+          },
+          "bullets": {
+            "type": "array",
+            "maxItems": 200,
+            "items": {
+              "type": "string",
+              "maxLength": 20000
+            }
+          }
+        },
+        "required": [
+          "id",
+          "dates",
+          "location",
+          "title",
+          "company",
+          "bullets"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "education": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 20000
+          },
+          "dates": {
+            "type": "string",
+            "maxLength": 20000
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 20000
+          },
+          "organisation": {
+            "type": "string",
+            "maxLength": 20000
+          },
+          "detail": {
+            "type": "string",
+            "maxLength": 20000
+          }
+        },
+        "required": [
+          "id",
+          "dates",
+          "title",
+          "organisation",
+          "detail"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "projects": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 20000
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 20000
+          },
+          "detail": {
+            "type": "string",
+            "maxLength": 20000
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "detail"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "variants": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 20000
+          },
+          "label": {
+            "type": "string",
+            "maxLength": 20000
+          },
+          "language": {
+            "type": "string",
+            "maxLength": 20000
+          },
+          "headline": {
+            "type": "string",
+            "maxLength": 20000
+          },
+          "summary": {
+            "type": "string",
+            "maxLength": 20000
+          },
+          "opportunityId": {
+            "type": "string",
+            "maxLength": 20000
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "language",
+          "headline",
+          "summary",
+          "opportunityId"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "reviewStatus": {
+      "type": "string",
+      "maxLength": 20000
+    },
+    "studio": {
+      "type": "object",
+      "properties": {
+        "variantId": {
+          "type": "string",
+          "maxLength": 20000
+        },
+        "photo": {
+          "type": "boolean"
+        },
+        "opportunityId": {
+          "type": "string",
+          "maxLength": 20000
+        }
+      },
+      "required": [
+        "variantId",
+        "photo",
+        "opportunityId"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "name",
+    "email",
+    "phone",
+    "location",
+    "language",
+    "headline",
+    "summary",
+    "skills",
+    "languages",
+    "experience",
+    "education",
+    "projects",
+    "variants",
+    "reviewStatus",
+    "studio"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

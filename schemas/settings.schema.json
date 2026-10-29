@@ -1,0 +1,200 @@
+{
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "appearance": {
+      "enum": [
+        "system",
+        "dark",
+        "light"
+      ]
+    },
+    "darkPalette": {
+      "enum": [
+        "charcoal",
+        "forest"
+      ]
+    },
+    "lightPalette": {
+      "enum": [
+        "paper",
+        "parchment"
+      ]
+    },
+    "textSize": {
+      "type": "integer",
+      "minimum": 12,
+      "maximum": 22
+    },
+    "reducedMotion": {
+      "type": "boolean"
+    },
+    "provider": {
+      "enum": [
+        "",
+        "chatgpt",
+        "claude"
+      ]
+    },
+    "model": {
+      "type": "string",
+      "maxLength": 150
+    },
+    "language": {
+      "type": "string",
+      "maxLength": 35
+    },
+    "currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$"
+    },
+    "timezone": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "background": {
+      "type": "boolean"
+    },
+    "startAtLogin": {
+      "type": "boolean"
+    },
+    "notifications": {
+      "type": "object",
+      "properties": {
+        "jobs": {
+          "type": "boolean"
+        },
+        "reminders": {
+          "type": "boolean"
+        },
+        "details": {
+          "type": "boolean"
+        },
+        "quietStart": {
+          "type": "string",
+          "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+        },
+        "quietEnd": {
+          "type": "string",
+          "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+        }
+      },
+      "required": [
+        "jobs",
+        "reminders",
+        "details",
+        "quietStart",
+        "quietEnd"
+      ],
+      "additionalProperties": false
+    },
+    "routine": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "intervalHours": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 720
+        },
+        "searchOnLaunch": {
+          "type": "boolean"
+        },
+        "maxNew": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "applicationMinutes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 480
+        },
+        "reviewDays": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 90
+        }
+      },
+      "required": [
+        "enabled",
+        "intervalHours",
+        "searchOnLaunch",
+        "maxNew",
+        "applicationMinutes",
+        "reviewDays"
+      ],
+      "additionalProperties": false
+    },
+    "privacy": {
+      "type": "object",
+      "properties": {
+        "allowAI": {
+          "type": "boolean"
+        },
+        "backgroundAI": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "allowAI",
+        "backgroundAI"
+      ],
+      "additionalProperties": false
+    },
+    "cloud": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "repository": {
+          "type": "string",
+          "pattern": "^$|^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"
+        },
+        "branch": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "publishCapability": {
+          "type": "boolean"
+        },
+        "verified": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "enabled",
+        "repository",
+        "branch",
+        "publishCapability",
+        "verified"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "appearance",
+    "darkPalette",
+    "lightPalette",
+    "textSize",
+    "reducedMotion",
+    "provider",
+    "model",
+    "language",
+    "currency",
+    "timezone",
+    "background",
+    "startAtLogin",
+    "notifications",
+    "routine",
+    "privacy",
+    "cloud"
+  ],
+  "additionalProperties": false
+}

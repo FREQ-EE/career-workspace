@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "appearance": "system",
+  "darkPalette": "charcoal",
+  "lightPalette": "paper",
+  "textSize": 15,
+  "reducedMotion": false,
+  "provider": "",
+  "model": "",
+  "language": "en",
+  "currency": "EUR",
+  "timezone": "",
+  "background": false,
+  "startAtLogin": false,
+  "notifications": {
+    "jobs": true,
+    "reminders": true,
+    "details": false,
+    "quietStart": "22:00",
+    "quietEnd": "08:00"
+  },
+  "routine": {
+    "enabled": false,
+    "intervalHours": 12,
+    "searchOnLaunch": true,
+    "maxNew": 5,
+    "applicationMinutes": 60,
+    "reviewDays": 14
+  },
+  "privacy": {
+    "allowAI": false,
+    "backgroundAI": false
+  },
+  "cloud": {
+    "enabled": false,
+    "repository": "",
+    "branch": "main",
+    "publishCapability": false,
+    "verified": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 2,
+  "name": "",
+  "email": "",
+  "phone": "",
+  "location": "",
+  "language": "en",
+  "headline": "",
+  "summary": "",
+  "skills": [],
+  "languages": [],
+  "experience": [],
+  "education": [],
+  "projects": [],
+  "variants": [],
+  "reviewStatus": "Review all facts before sending",
+  "studio": {
+    "variantId": "",
+    "photo": false,
+    "opportunityId": ""
+  }
+}

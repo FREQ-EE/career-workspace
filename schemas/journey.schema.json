@@ -1,0 +1,122 @@
+{
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "step": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 6
+    },
+    "complete": {
+      "type": "boolean"
+    },
+    "confirmed": {
+      "type": "array",
+      "maxItems": 8,
+      "items": {
+        "type": "string",
+        "maxLength": 40
+      }
+    },
+    "draft": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "calibration": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 20000
+          },
+          "interest": {
+            "enum": [
+              "Interested",
+              "Maybe",
+              "No",
+              ""
+            ]
+          },
+          "accuracy": {
+            "enum": [
+              "Accurate",
+              "Too optimistic",
+              "Too cautious",
+              ""
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "maxLength": 20000
+          },
+          "context": {
+            "type": "object",
+            "properties": {
+              "company": {
+                "type": "string",
+                "maxLength": 500
+              },
+              "title": {
+                "type": "string",
+                "maxLength": 500
+              },
+              "fit": {
+                "type": "string",
+                "maxLength": 20000
+              },
+              "gaps": {
+                "type": "string",
+                "maxLength": 20000
+              },
+              "goalScore": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 0,
+                "maximum": 5
+              },
+              "capabilityScore": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 0,
+                "maximum": 5
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "interest",
+          "accuracy",
+          "reason"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "reviewedAt": {
+      "type": "string",
+      "maxLength": 20000
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "step",
+    "complete",
+    "confirmed",
+    "draft",
+    "calibration",
+    "reviewedAt"
+  ],
+  "additionalProperties": false
+}

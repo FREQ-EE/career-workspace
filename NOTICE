@@ -1,0 +1,3 @@
+The Sites build helper in build/ is Copyright (c) 2026 OpenAI, licensed under MIT; its full notice is retained alongside it. Dependency licences remain with their respective packages.
+
+Installed desktop packages include the official unmodified Claude Code helper. Its separate Anthropic licence is included beside the binary. Electron, Chromium, Node.js and other dependencies retain their respective licences in the packaged distribution. The application is not endorsed by an AI provider.
